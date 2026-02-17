@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="fa-IR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>IRON ACCESSORY | DARK STORE</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap');
+
+    :root {
+      --bg-dark: #0a0c0f;
+      --bg-card: #111518;
+      --surface-dark: #161b22;
+      --border-heavy: #2a313c;
+      --neon-red: #ff3b3f;
+      --neon-silver: #c0c9d7;
+      --neon-gold: #cfb53b;
+      --neon-cyan: #3bc7c7;
+      --text-lux: #eaeef2;
+      --text-dim: #8a949e;
+      --accent-line: #ff3b3f;
+      --grid-glow: rgba(255, 59, 63, 0.05);
+    }
+
+    html, body {
+      overflow-x: hidden !important;
+      width: 100%;
+      max-width: 100%;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-dark);
+      font-family: 'Rajdhani', 'Inter', sans-serif;
+      color: var(--text-lux);
+      letter-spacing: 0.5px;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,0.8) 0px, rgba(0,0,0,0.8) 2px, transparent 3px, transparent 5px);
+      pointer-events: none;
+      z-index: 9999;
+      opacity: 0.1;
+      mix-blend-mode: multiply;
+    }
+
+    .grid-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        linear-gradient(var(--grid-glow) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-glow) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: -2;
+    }
+
+    .floating-debris {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      overflow: hidden;
+    }
+    .debris {
+      position: absolute;
+      background: radial-gradient(circle, rgba(192, 201, 215, 0.2) 0%, transparent 80%);
+      border-radius: 50%;
+      filter: blur(8px);
+      animation: debrisMove 25s infinite linear;
+    }
+    @keyframes debrisMove {
+      0% { transform: translateY(0) translateX(0) scale(1); opacity: 0.2; }
+      50% { transform: translateY(-120px) translateX(80px) scale(1.5); opacity: 0.5; }
+      100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.2; }
+    }
+
+    .navbar {
+      background-color: rgba(10, 12, 15, 0.95);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border-heavy);
+      box-shadow: 0 10px 30px -10px rgba(0,0,0,0.8);
+      padding: 18px 0;
+    }
+    .navbar-brand {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2rem;
+      letter-spacing: 6px;
+      color: var(--text-lux) !important;
+      text-shadow: 0 0 8px var(--neon-red);
+      display: flex;
+      align-items: center;
+    }
+    .nav-link {
+      color: var(--text-dim) !important;
+      font-weight: 600;
+      padding: 8px 20px !important;
+      transition: 0.2s;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+    }
+    .nav-link:hover {
+      color: var(--text-lux) !important;
+      text-shadow: 0 0 5px var(--neon-red);
+    }
+    .cart-badge {
+      background: var(--neon-red);
+      color: black;
+      font-weight: 900;
+      border-radius: 0;
+      padding: 6px 14px;
+      border: none;
+      box-shadow: 0 0 15px rgba(255, 59, 63, 0.6);
+    }
+
+    .hero-dark {
+      background: linear-gradient(145deg, #0b0e12 0%, #030405 100%);
+      border-bottom: 3px solid var(--neon-red);
+      position: relative;
+      padding: 80px 0;
+      margin-top: 76px;
+    }
+    .hero-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 6rem;
+      font-weight: 900;
+      line-height: 0.9;
+      text-transform: uppercase;
+      color: var(--text-lux);
+      text-shadow: 4px 4px 0 #000, 8px 8px 0 rgba(255,59,63,0.3);
+      letter-spacing: 10px;
+    }
+    .hero-sub {
+      font-size: 1.3rem;
+      font-weight: 300;
+      color: var(--neon-silver);
+      border-left: 6px solid var(--neon-red);
+      padding-left: 24px;
+      background: rgba(0,0,0,0.4);
+    }
+    .cta-dark {
+      background: transparent;
+      border: 2px solid var(--neon-red);
+      color: var(--text-lux);
+      padding: 14px 48px;
+      border-radius: 0;
+      font-weight: 700;
+      letter-spacing: 6px;
+      transition: 0.2s;
+      text-transform: uppercase;
+      box-shadow: 0 0 0 rgba(255,59,63,0.5);
+    }
+    .cta-dark:hover {
+      background: var(--neon-red);
+      border-color: var(--neon-red);
+      color: black;
+      box-shadow: 0 0 35px var(--neon-red);
+    }
+
+    .filter-badge {
+      background: var(--surface-dark);
+      border: 1px solid var(--border-heavy);
+      color: var(--text-dim);
+      border-radius: 0px;
+      padding: 12px 28px;
+      font-weight: 600;
+      transition: 0.15s;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+    .filter-badge:hover, .filter-badge.active {
+      background: var(--neon-red);
+      color: black;
+      border-color: var(--neon-red);
+      box-shadow: 0 0 18px var(--neon-red);
+    }
+
+    .product-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-heavy);
+      border-bottom: 4px solid var(--border-heavy);
+      padding: 0;
+      transition: all 0.25s cubic-bezier(0.2, 0, 0, 1);
+      position: relative;
+      box-shadow: 0 15px 35px -10px black;
+      backdrop-filter: blur(4px);
+    }
+    .product-card:hover {
+      border-bottom: 4px solid var(--neon-red);
+      border-color: var(--neon-red);
+      transform: translateY(-12px) scale(1.02);
+      box-shadow: 0 30px 50px -10px #000, 0 0 0 2px rgba(255,59,63,0.1);
+    }
+    .product-badge {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      background: black;
+      color: var(--neon-silver);
+      border-left: 6px solid var(--neon-red);
+      font-weight: 800;
+      padding: 6px 16px;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      z-index: 2;
+    }
+    .product-img {
+      background: #1e242c;
+      padding: 30px 20px;
+      text-align: center;
+      border-bottom: 1px solid #2f3844;
+    }
+    .product-img i {
+      color: var(--neon-silver);
+      filter: drop-shadow(0 0 15px rgba(255,59,63,0.3));
+      transition: 0.2s;
+    }
+    .product-card:hover .product-img i {
+      color: var(--neon-red);
+      transform: scale(1.1);
+    }
+    .product-info {
+      padding: 24px 20px;
+      background: var(--bg-card);
+    }
+    .product-title {
+      font-weight: 700;
+      font-size: 1.25rem;
+      color: var(--text-lux);
+      margin-bottom: 6px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    .product-cat {
+      color: var(--neon-cyan);
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      opacity: 0.9;
+    }
+    .product-price {
+      font-weight: 900;
+      font-size: 1.6rem;
+      color: var(--neon-gold);
+      text-shadow: 0 0 6px rgba(207,181,59,0.4);
+    }
+    .btn-add {
+      background: transparent;
+      border: 1.5px solid var(--neon-silver);
+      color: var(--text-lux);
+      padding: 10px 20px;
+      border-radius: 0;
+      font-weight: 700;
+      width: 100%;
+      transition: 0.2s;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      font-size: 0.85rem;
+    }
+    .btn-add:hover {
+      background: var(--neon-red);
+      border-color: var(--neon-red);
+      color: black;
+      box-shadow: 0 0 20px var(--neon-red);
+    }
+
+    .metal-banner {
+      background: linear-gradient(90deg, #0a0c0f 0%, #1a1e24 100%);
+      border-top: 1px solid var(--neon-red);
+      border-bottom: 1px solid var(--neon-red);
+      padding: 28px;
+      margin: 60px 0;
+      position: relative;
+    }
+    .banner-text {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2.2rem;
+      letter-spacing: 8px;
+      color: var(--text-lux);
+      margin-bottom: 0;
+    }
+
+    .footer-dark {
+      background: #07090c;
+      border-top: 1px solid var(--border-heavy);
+      padding: 60px 0 30px;
+      color: var(--text-dim);
+    }
+
+    ::-webkit-scrollbar {
+      width: 8px;
+      background: #0a0c0f;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--neon-red);
+      border-radius: 0;
+    }
+
+    .glitch-text {
+      text-shadow: 2px 2px 0 var(--neon-red), -2px -2px 0 rgba(59,199,199,0.5);
+    }
+
+    @media (max-width: 768px) {
+      .hero-title { 
+        font-size: 3.5rem; 
+      }
+      .col-lg-5.text-center div {
+        transform: rotateZ(5deg) scale(0.7) !important;
+      }
+      .row.g-5 {
+        --bs-gutter-x: 1.5rem;
+      }
+    }
+
+    .container, .container-fluid, .row, [class*="col-"] {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid-background"></div>
+  <div class="floating-debris">
+    <div class="debris" style="width: 350px; height: 350px; top: 10%; left: 5%;"></div>
+    <div class="debris" style="width: 500px; height: 500px; bottom: 0; right: 0; animation-delay: -5s;"></div>
+    <div class="debris" style="width: 200px; height: 200px; top: 60%; left: 70%; animation-delay: -12s;"></div>
+    <div class="debris" style="width: 400px; height: 400px; top: 80%; left: 20%; animation-delay: -7s;"></div>
+  </div>
+
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="fas fa-bolt me-2" style="color: var(--neon-red);"></i> IRON//ACC
+      </a>
+      <button class="navbar-toggler text-white border-white" type="button" data-bs-toggle="collapse" data-bs-target="#navbarDark">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarDark">
+        <ul class="navbar-nav mx-auto">
+          <li class="nav-item"><a class="nav-link" href="#">HOME</a></li>
+          <li class="nav-item"><a class="nav-link active" href="#">ACCESSORIES</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">CHAINS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">RINGS</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">LIMITED</a></li>
+        </ul>
+        <div class="d-flex">
+          <span class="cart-badge"><i class="fas fa-shopping-bag me-2"></i> 3</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero-dark">
+    <div class="container">
+      <div class="row align-items-center g-4">
+        <div class="col-lg-7">
+          <h1 class="hero-title animate__animated animate__fadeInUp">LASH <span style="color: var(--neon-red);">METAL</span></h1>
+          <h1 class="hero-title animate__animated animate__fadeInUp animate__delay-1s" style="font-size: 4rem;">ACCESSORY</h1>
+          <div class="hero-sub mt-5 animate__animated animate__fadeIn animate__delay-1s">
+            <span style="background: var(--neon-red); color: black; padding: 6px 12px;">2025 COLLECTION</span> — forged in darkness
+          </div>
+          <p class="mt-5 text-light-50" style="color: var(--text-dim); font-size: 1.2rem; max-width: 80%;">
+            استیل ضدزنگ، نقره تیره، چرم خفن. فقط برای کسایی که استایلشون لش و منحصربه‌فرده.
+          </p>
+          <div class="mt-5 d-flex gap-4">
+            <a href="#" class="cta-dark btn">کالکشن کامل</a>
+            <a href="#" class="btn" style="border-bottom: 2px solid var(--neon-silver); color: white; border-radius: 0;">LIMITED EDITION →</a>
+          </div>
+        </div>
+        <div class="col-lg-5 text-center">
+          <div style="transform: rotateZ(5deg);">
+            <i class="fas fa-skull" style="font-size: 200px; color: var(--neon-silver); opacity: 0.3; text-shadow: 0 0 30px var(--neon-red);"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container mt-5">
+    <div class="d-flex flex-wrap gap-3 justify-content-center py-4">
+      <span class="filter-badge active">همه محصولات</span>
+      <span class="filter-badge">انگشتر</span>
+      <span class="filter-badge">گردنبند</span>
+      <span class="filter-badge">دستبند</span>
+      <span class="filter-badge">گوشواره</span>
+      <span class="filter-badge">ست لش</span>
+    </div>
+  </div>
+
+  <section class="container mt-3 pb-5">
+    <div class="row g-5">
+    
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card animate__animated animate__fadeInUp">
+          <div class="product-badge">LIMITED 1/50</div>
+          <div class="product-img">
+            <i class="fas fa-crown" style="font-size: 85px;"></i>
+          </div>
+          <div class="product-info">
+            <span class="product-cat"><i class="fas fa-ring"></i> RING</span>
+            <h3 class="product-title">SKULL CRUSH</h3>
+            <span class="product-price">$189</span>
+            <div class="mt-4">
+              <button class="btn-add" onclick="addToCart(this)"><i class="fas fa-shopping-cart me-2"></i> ADD TO CAGE</button>
+            </div>
+            <div class="mt-3 text-secondary small">
+              <i class="fas fa-bolt"></i> استیل مشکی | حکاکی لیزری
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card animate__animated animate__fadeInUp animate__delay-1s">
+          <div class="product-badge" style="border-left-color: var(--neon-cyan);">BESTSELLER</div>
+          <div class="product-img">
+            <i class="fas fa-link" style="font-size: 85px;"></i>
+          </div>
+          <div class="product-info">
+            <span class="product-cat"><i class="fas fa-chain"></i> CHAIN</span>
+            <h3 class="product-title">IRON VORTEX</h3>
+            <span class="product-price">$259</span>
+            <div class="mt-4">
+              <button class="btn-add" onclick="addToCart(this)"><i class="fas fa-shopping-cart me-2"></i> ADD TO CAGE</button>
+            </div>
+            <div class="mt-3 text-secondary small">وزن ۳۰۰ گرم | پلاتین‌پوش</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card animate__animated animate__fadeInUp animate__delay-2s">
+          <div class="product-img">
+            <i class="fas fa-clock" style="font-size: 85px;"></i>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">BRACELET</span>
+            <h3 class="product-title">BLACK LEATHER</h3>
+            <span class="product-price">$119</span>
+            <div class="mt-4">
+              <button class="btn-add" onclick="addToCart(this)"><i class="fas fa-shopping-cart me-2"></i> ADD TO CAGE</button>
+            </div>
+            <div class="mt-3 text-secondary small">چرم صاف | یراق استیل مشکی</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-badge">NEW</div>
+          <div class="product-img">
+            <i class="fas fa-crosshairs" style="font-size: 85px;"></i>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">EARRING</span>
+            <h3 class="product-title">BLADE EDGE</h3>
+            <span class="product-price">$149</span>
+            <div class="mt-4">
+              <button class="btn-add" onclick="addToCart(this)"><i class="fas fa-shopping-cart me-2"></i> ADD TO CAGE</button>
+            </div>
+            <div class="mt-3 text-secondary small">جفت | تیتانیوم مات</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-img">
+            <i class="fas fa-dragon" style="font-size: 85px;"></i>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">PENDANT</span>
+            <h3 class="product-title">OBSIDIAN TEAR</h3>
+            <span class="product-price">$329</span>
+            <div class="mt-4">
+              <button class="btn-add" onclick="addToCart(this)"><i class="fas fa-shopping-cart me-2"></i> ADD TO CAGE</button>
+            </div>
+            <div class="mt-3 text-secondary small">ابسیدین طبیعی + زنجیر نقره</div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6 col-lg-4">
+        <div class="product-card">
+          <div class="product-badge" style="border-left-color: var(--neon-gold);">VIP</div>
+          <div class="product-img">
+            <i class="fas fa-helmet-battle" style="font-size: 85px;"></i>
+          </div>
+          <div class="product-info">
+            <span class="product-cat">LASH SET</span>
+            <h3 class="product-title">WARLORD</h3>
+            <span class="product-price">$599</span>
+            <div class="mt-4">
+              <button class="btn-add" onclick="addToCart(this)"><i class="fas fa-shopping-cart me-2"></i> ADD TO CAGE</button>
+            </div>
+            <div class="mt-3 text-secondary small">حلقه + گردنبند + دستبند</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="metal-banner">
+    <div class="container">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <h2 class="banner-text"><i class="fas fa-bolt me-3" style="color: var(--neon-red);"></i> تا ۴۰٪ تخفیف ویژه لانچ</h2>
+        <span class="filter-badge active" style="background: black; border: 1px solid var(--neon-red); padding: 16px 48px;">کد: LASH2025</span>
+      </div>
+    </div>
+  </section>
+
+  <div class="container py-5">
+    <div class="row g-4">
+      <div class="col-md-4">
+        <div class="d-flex align-items-center gap-4 p-4" style="background: var(--surface-dark); border-left: 6px solid var(--neon-red);">
+          <i class="fas fa-truck fa-3x" style="color: var(--neon-cyan);"></i>
+          <div>
+            <h5>ارسال سریع</h5>
+            <span class="text-secondary">۲۴ ساعته با بسته‌بندی مشکی</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex align-items-center gap-4 p-4" style="background: var(--surface-dark); border-left: 6px solid var(--neon-silver);">
+          <i class="fas fa-shield-haltered fa-3x" style="color: var(--neon-gold);"></i>
+          <div>
+            <h5>ضمانت اصالت</h5>
+            <span class="text-secondary">استیل آلمانی و نقره</span>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="d-flex align-items-center gap-4 p-4" style="background: var(--surface-dark); border-left: 6px solid var(--neon-red);">
+          <i class="fas fa-rotate-left fa-3x" style="color: var(--neon-red);"></i>
+          <div>
+            <h5>۱۴ روز بازگشت</h5>
+            <span class="text-secondary">بدون سوال</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="footer-dark">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="d-flex align-items-center gap-3">
+            <i class="fas fa-bolt fa-2x" style="color: var(--neon-red);"></i>
+            <span style="font-family: 'Bebas Neue'; font-size: 2.4rem; letter-spacing: 8px;">IRON//ACCESSORY</span>
+          </div>
+          <p class="mt-4" style="color: #95a5a6;">استایل لش، بافت خشن، متریال سخت. فروشگاه تخصصی اکسسوری دارک و منحصر‌به‌فرد. برای کسایی که معمولی نیستن.</p>
+        </div>
+        <div class="col-md-3">
+          <h6 class="text-white">CATEGORIES</h6>
+          <ul class="list-unstyled">
+            <li class="pb-2"><a style="color: var(--text-dim); text-decoration: none;">RINGS</a></li>
+            <li class="pb-2"><a style="color: var(--text-dim); text-decoration: none;">CHAINS</a></li>
+            <li class="pb-2"><a style="color: var(--text-dim); text-decoration: none;">CUFFS</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4">
+          <h6 class="text-white">FOLLOW THE DARK</h6>
+          <div class="d-flex gap-4 mt-3">
+            <i class="fab fa-instagram fa-2x" style="color: var(--neon-silver);"></i>
+            <i class="fab fa-twitter fa-2x" style="color: var(--neon-silver);"></i>
+            <i class="fab fa-tiktok fa-2x" style="color: var(--neon-silver);"></i>
+            <i class="fab fa-youtube fa-2x" style="color: var(--neon-silver);"></i>
+          </div>
+          <p class="mt-4 small">© 2025 IRON ACC — all rights reserved. forged in dark.</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+  <script>
+    function addToCart(btn) {
+      btn.innerHTML = '<i class="fas fa-check me-2"></i> ADDED';
+      btn.style.background = 'var(--neon-red)';
+      btn.style.borderColor = 'var(--neon-red)';
+      btn.style.color = 'black';
+      btn.style.boxShadow = '0 0 25px var(--neon-red)';
+      
+      const cart = document.querySelector('.cart-badge');
+      let count = parseInt(cart.innerText.replace(/\D/g, '')) || 0;
+      cart.innerHTML = `<i class="fas fa-shopping-bag me-2"></i> ${count + 1}`;
+      
+      setTimeout(() => {
+        btn.innerHTML = '<i class="fas fa-shopping-cart me-2"></i> ADD TO CAGE';
+        btn.style.background = 'transparent';
+        btn.style.borderColor = 'var(--neon-silver)';
+        btn.style.color = 'var(--text-lux)';
+        btn.style.boxShadow = 'none';
+      }, 1500);
+    }
+
+    // filter badge active toggle
+    const filters = document.querySelectorAll('.filter-badge');
+    filters.forEach(filter => {
+      filter.addEventListener('click', function() {
+        filters.forEach(f => f.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+
+    // add subtle animation on hero load
+    window.addEventListener('load', function() {
+      console.log('🔥 IRON ACCESSORY — LASH MODE ACTIVATED ✅ NO HORIZONTAL SCROLL');
+      // dynamic glitch effect for brand
+      const brand = document.querySelector('.navbar-brand');
+      if(brand) {
+        setInterval(() => {
+          brand.style.textShadow = '0 0 10px var(--neon-red), 0 0 20px #ff0000';
+          setTimeout(() => brand.style.textShadow = '0 0 8px var(--neon-red)', 100);
+        }, 2000);
+      }
+    });
+  </script>
+
+  <!-- extra dark custom style for badge active -->
+  <style>
+    .filter-badge.active {
+      background: var(--neon-red) !important;
+      color: black !important;
+      border-color: var(--neon-red) !important;
+      box-shadow: 0 0 18px var(--neon-red);
+    }
+    .btn-add:active {
+      transform: scale(0.96);
+    }
+  </style>
+</body>
+</html>
